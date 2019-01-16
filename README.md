@@ -3,7 +3,7 @@ These files are used to perform a huddle test with seismometers. It's a relative
 
 ### Requirements
 * [ObsPy](http://obspy.org)
-* [dinver (from Geopsy package)] (http://www.geopsy.org/download.php)
+* [dinver](http://www.geopsy.org/download.php) - from the Geopsy package
 
 ### workflow
 
