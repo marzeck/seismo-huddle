@@ -1,9 +1,19 @@
 # seismo-huddle
-These files are used to perform a huddle test with seismometers. It's a relative calibration of the poles, zeroes and the Gain of the sensors. 
+These files are used to perform a huddle test with seismometers. It's a relative calibration of the poles, zeroes and the Gain of the sensors.
+
 
 ### Requirements
 * [ObsPy](http://obspy.org)
 * [dinver](http://www.geopsy.org/download.php) - from the Geopsy package
+
+
+### Background
+Input are continuous seismic data of two or more seismometers in very close distance (cm) to each other measuring hours of the same noise. Best results are achieved with a big earthquake during sensing period. Only compare data of the same component! The example data provided in the repository is from a huddle test in Potsdam, Germany. Only vertical components are used around the time of a [M6.7 earthquake in Brazil](https://geofon.gfz-potsdam.de/eqinfo/event.php?id=gfz2019aiuk). In case you want to use a different dataset and/or a different event, please change in the file "huddle-test-T2.py" if necessary:
+
+* datadir
+* start(time) & end(time)
+* all Poles and Zeros (PAZ) and sampling frequency
+
 
 ### workflow
 
@@ -38,3 +48,7 @@ The uppermost lines (the results of smallest misfit) of all given ordered log-fi
 $ python huddle-analysis.py
 ```
 A small python script to plot all poles (imaginary over real part) derived by forward modelling and with smalles misfit.
+
+### Citation
+
+Havskov, J., & Alguacil, G. (2004). Instrumentation in earthquake seismology.
