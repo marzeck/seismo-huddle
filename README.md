@@ -47,7 +47,15 @@ The uppermost lines (the results of smallest misfit) of all given ordered log-fi
 ```
 $ python huddle-analysis.py
 ```
-A small python script to plot all poles (imaginary over real part) derived by forward modelling and with smalles misfit.
+A small python script to plot all poles (imaginary over real part) derived from forward modelling, with smallest misfit (see results section).
+
+### Results
+![resulting plot](example-plot.png)
+The resulting plot, as shown above, will give show all poles in different subplots. Since this example was performed with Lennartz instruments only the three poles are shown (zeros are three complex zeros). In the upper left panel, the whole complex plane is shown with all poles. The other three panels show each pole in close up for visual control.
+
+In the *huddle-analysis.py* file the theoretical poles and zeros can be adjusted at the top of the file (in case you don't know the instrument specifications...). Those theoretical values will be shown as green diamonds in the plot. In addition, one station/sensor can be chosen to be highlighted (variable *highl*) in a different color.
+
+This workflow inverted for poles, zeros and the gain, but the latter is not visually controlled yet. Feel free to suggest something for that. The values can be found in the *huddle-result.txt* file in the second last column.
 
 ### Citation
 
