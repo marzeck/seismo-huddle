@@ -56,7 +56,7 @@ unit_circle = patches.Circle(
 	alpha=0.1)
 
 # raw plot
-fig = plt.figure()
+fig = plt.figure(figsize=(12, 9))
 ax1 = plt.subplot(221)
 for j in results:
 	if j[0] == highl or j[1] == highl and highl is not None:
@@ -128,9 +128,4 @@ ax4.set_title('third pole')
 
 plt.tight_layout()
 plt.suptitle('best fitted poles - huddle test')
-plt.savefig('resulting-poles.png', dpi=300, format='png')
-#plt.show()
-
-
-
-
+plt.savefig('resulting-poles.png', dpi=80, format='png')
