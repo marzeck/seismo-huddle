@@ -23,6 +23,9 @@ echo '####################################################################'
 echo '\n run inversion on dinver for all provided seismometer combinations'
 echo '####################################################################'
 
+# get current working directory (new in Geopsy 3.4+)
+cwd=$(pwd)
+
 for file in transfer-functions/*; do
 	fname=$(basename "$file")
 
@@ -31,8 +34,9 @@ for file in transfer-functions/*; do
 
 	echo "run huddle test for station ${S1} and ${S2}"
 
-	sed -i "28s/.*/with open('transfer-functions\/T2-relative_$S1-to-$S2.txt','r') as f:/" huddle-test-optimizer.py
-	sed -i "71s/.*/with open('misfits-log\/misfitslog-$S1-$S2.txt','a') as f:/" huddle-test-optimizer.py
+	sed -i "28s/.*/with open('$cwd\/transfer-functions\/T2-relative_$S1-to-$S2.txt','r') as f:/" huddle-test-optimizer.py
+	sed -i "70s/.*/if not os.path.exists('$cwd\/misfits-log'):/" huddle-test-optimizer.py
+	sed -i "73s/.*/with open('$cwd\/misfits-log\/misfitslog-$S1-$S2.txt','a') as f:/" huddle-test-optimizer.py
 	dinver -i DinverExt -optimization -target huddle-test.dinver -param huddle-test.dinver -f
 
 	mkdir -p run-reports

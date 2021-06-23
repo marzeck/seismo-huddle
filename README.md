@@ -27,9 +27,16 @@ Calculates all relative transferfunctions of all seismometer combination of the 
 ```
 $ bash huddle-dinver-run.sh
 ```
-(uses script "huddle-test-optimizer.py)
+(uses script "huddle-test-optimizer.py")
 
 A forward modeling of all given transferfunctions will be done with dinver. First, the python script "huddle-test-optimizer.py" will be adjusted automatically. Second, dinver will use this python script to optimize the Poles and Zeros and Gain. All free parameters, which will be optimized are provided in the .dinver-file and can be changed in there (with the use of dinver). The communication between the python script to be optimized and the forward modelling of dinver is done via the files "parameters" and "misfit". They are automatically created/removed and should not be changed during the calculations. The results (poles, zeroes, Gain, misfit) of each calculation step are stored in log files in the subfolder /misfits-log. An overview of the forward models can be found in run-reports.
+
+**New in Geopsy 3.4 and newer!!**
+Dinver now allows multi-threading, by creating random (hexadecimal labelled) subdirectories and calls the external script in there. For that, absolute pathnames need to be provided to properly link between the external script (huddle-test-optimizer.py) and dinver. The 'parameter' and 'misfit' files are not affected and should remain with relative names. But you need to adapt the location of the external script within the huddle-test.dinver environment file, either with the GUI of dinver or convert the *.dinver file into an xml file and back:
+```
+$ tar -xvzf huddle-test.dinver
+$ tar -cvzf huddle-test.dinver contents.xml 
+```
 
 3.)
 ```
